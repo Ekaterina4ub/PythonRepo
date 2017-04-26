@@ -3,22 +3,14 @@
 # Напечатать словарь, ключами которого являются четные символы строки, а значениями нечетные.
 # Если последнему ключу не хватает значения, не добавлять его в словарь.
 
-a = raw_input("Введите строку: ")
-#print "Вы ввели строку: ", a
+text = input("Введите строку: ")
 
-# dict = {}
-# print(dict)
-for i, j in enumerate(a):
-    items = [(i, j)]
-    d = dict(items)
-    #print(i, j)
-    print(d)
+len = len(text)
 
-# if i%2 == 0:
+for i in range(0, len, 2):
+    if (len%2 != 0 and i == len - 1):
+        break
+    items = [(text[i + 1], text[i])]
+    print(dict(items))
 
-#   items = [(j, j)]
-    #d = dict(items)
-
-
-
-
+              
