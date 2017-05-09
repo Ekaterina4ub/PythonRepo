@@ -6,3 +6,11 @@
 # print(mult5(7))
 # 35
 
+def mult(arg):
+    def multiple_inner(number):
+        return arg*number
+    return multiple_inner
+
+r = mult(4)
+print(r)
+print(r(7))
