@@ -17,4 +17,4 @@ def fib(n):
         i += 1
     return f
 
-#print(fib(n))
+print(fib(n))
