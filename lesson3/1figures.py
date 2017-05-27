@@ -7,57 +7,59 @@
 
 import math
 
-class Figures:
+class Figure:
     def __init__(self, a, b):
         self.a = a
         self.b = b
 
-#    @staticmethod
-    def area(a, b):
-        area = a * b
-        return area
+    def area(self):
+        s = self.a * self.b
+        return s
 
-    def perimeter(a, b):
-        perimeter = 2 * (a + b)
-        return perimeter
+    def perimeter(self):
+        p = 2 * (self.a + self.b)
+        return p
 
-    # def center:
-    #     center =
-    #     return center
+    def center(self):
+        center = [self.a/2, self.b/2]
+        return center
 
-class Rectangle(Figures):
+class Rectangle(Figure):
     pass
 
-class Square(Figures):
+class Square(Figure):
     pass
 
-class Circle:
+class Circle(Figure):
 
     def __init__(self, r):
-        # self.a = a
-        # self.b = b
         self.r = r
 
-    def area(r):
-        area = r**2 * math.pi
-        return area
+    def area(self):
+        s = self.r**2 * math.pi
+        return s
 
-    def perimeter(r):
-        perimeter = 2 * math.pi * r
-        return perimeter
+    def perimeter(self):
+        p = 2 * math.pi * self.r
+        return p
 
-    # def center:
-    #     center =
-    #     return center
+    def center(self):
+        center = [self.r, self.r]
+        return center
 
-r = Rectangle(1, 2)
-r1 = Square(1, 3)
-r2 = Circle(1)
-
-r.area
-r1.area
-r2.area
-
-print(r.area)
-print(r1.area)
-print(r2.area)
+# для проверки:
+# r = Rectangle(1, 2)
+# r1 = Square(3, 3)
+# r2 = Circle(5)
+#
+# print(r.area())
+# print(r.perimeter())
+# print(r.center())
+#
+# print(r1.area())
+# print(r1.perimeter())
+# print(r1.center())
+#
+# print(r2.area())
+# print(r2.perimeter())
+# print(r2.center())
