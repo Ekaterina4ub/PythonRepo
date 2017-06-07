@@ -1,3 +1,5 @@
+#coding: utf-8
+
 # Задача "Почти SimCity"
 # NB - Задача про классы, но не про наследование. Пользоваться наследованием можно,
 # но не факт, что это приведет к чему-то хорошему.
@@ -19,3 +21,70 @@
 
 # доделать текущую работу + написать методы save - который сохраняет созданную структуру городов - домов...
 # в файл и метод load - который из файла загружает сохранненные данные и создает необходимые экземпляры классов
+
+class House:
+    def __init__(self, name, street, population):
+        self.name = name
+        self.street = street
+        self.population = population
+
+    def __str__(self):
+        return str(self.street) + ', ' + str(self.name)
+
+class Street:
+    def __init__(self, name, city):
+        self.name = name
+        self.city = city
+        self.houses = {}
+
+    def __str__(self):
+        return str(self.city) + ', ' + str(self.name)
+
+    @property
+    def population(self):
+        # Популяция дома - сумма популяций улиц
+        return sum(house.population for house in self.houses.values())
+
+    def add_house(self, name, population):
+        house = House(self, name, population)
+        self.houses[name] = house
+        return house
+
+class City:
+    def __init__(self, name):
+        self.name = name
+        self.streets = {}
+
+    def __str__(self):
+        return self.name
+
+    @property
+    def population(self):
+        # Популяция дома - сумма популяций улиц
+        return sum(street.population for street in self.streets.values())
+
+    def add_street(self, name):
+        street = Street(self, name)
+        self.streets[name] = street
+        return street
+
+    def remove_street(self, name):
+        del self.streets[name]
+
+# h = House ('1', 'Vlasova', 500)
+# s = Street('Vlasova', 'Moscow')
+# c = City('Moscow')
+#
+# print(h)
+# print(s)
+# print(c)
+#
+# print(s.population)
+# print(s.add_house('2', 100))
+# print(s.population)
+#
+# print(c.population)
+# print(c.add_street('Vlasova'))
+# print(c.population)
+# print(c.remove_street('Vlasova'))
+# print(c.population)
