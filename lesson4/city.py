@@ -22,6 +22,9 @@
 # доделать текущую работу + написать методы save - который сохраняет созданную структуру городов - домов...
 # в файл и метод load - который из файла загружает сохранненные данные и создает необходимые экземпляры классов
 
+import pickle
+
+
 class House:
     def __init__(self, name, street, population):
         self.name = name
@@ -30,6 +33,15 @@ class House:
 
     def __str__(self):
         return str(self.street) + ', ' + str(self.name)
+
+    @classmethod
+    def load(cls, file_name):
+        with open(file_name, 'rb') as f:
+            return pickle.load(f)
+
+    def save(self, file_name):
+        with open(file_name, 'wb') as f:
+            pickle.dump(self, f)
 
 class Street:
     def __init__(self, name, city):
