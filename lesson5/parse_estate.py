@@ -12,34 +12,35 @@ offset = []
 
 for i in range(n):
     offset.append(i*30)
-    print(offset)
+print(offset)
 
-res = requests.get('https://realty.domclick.ru/prodazha-kvartir/?with_photo=1&addresses=0c5b2444-70a0-4932-980c-b4dc0d3f02b5&region=0c5b2444-70a0-4932-980c-b4dc0d3f02b5')
-html = res.text
-
-soup = BeautifulSoup(html, features='html.parser')
-#print(soup.prettify())
-
-prices = soup.find_all(class_='offer-snippet__title')
-#print(prices)
-
-res_pr = []
-for pr in prices:
-    sp = pr.find('span')
-    # удаляем пробелы в цене
-    res_pr.append(int(sp.text.replace(' ', '')))
-#print(res_pr)
-
-# посчитаем среднюю цену на странице
-sum(res_pr)
-avg_price = sum(res_pr)/len(res_pr)
-print(avg_price)
-
-
-
-base_url = " https://realty.domclick.ru/prodazha-kvartir/?addresses=0c5b2444-70a0-4932-980c-b4dc0d3f02b5&offset=%s&region=0c5b2444-70a0-4932-980c-b4dc0d3f02b5&with_photo=1"
-for url in [base_url % i for i in xrange(10)]:
+base_url = "https://realty.domclick.ru/prodazha-kvartir/?addresses=0c5b2444-70a0-4932-980c-b4dc0d3f02b5&offset=%s&region=0c5b2444-70a0-4932-980c-b4dc0d3f02b5&with_photo=1"
+for url in [base_url % i for i in offset]:
     r = requests.get(url)
+    html = r.text
+    #print(html)
+
+    soup = BeautifulSoup(html, features='html.parser')
+    #print(soup.prettify())
+
+    prices = soup.find_all(class_='offer-snippet__title')
+    #print(prices)
+
+    res_pr = []
+    for pr in prices:
+        sp = pr.find('span')
+        # удаляем пробелы в цене
+        res_pr.append(int(sp.text.replace(' ', '')))
+    #print(res_pr)
+
+    # посчитаем среднюю цену на странице
+    sum(res_pr)
+    avg_price = sum(res_pr)/len(res_pr)
+    print(avg_price)
+
+
+# res = requests.get('https://realty.domclick.ru/prodazha-kvartir/?with_photo=1&addresses=0c5b2444-70a0-4932-980c-b4dc0d3f02b5&region=0c5b2444-70a0-4932-980c-b4dc0d3f02b5')
+# html = res.text
 
 # base_url = "http://example.com/something/?page=%s"
 # for url in [base_url % i for i in xrange(10)]:
