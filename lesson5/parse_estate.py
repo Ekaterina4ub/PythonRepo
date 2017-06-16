@@ -14,6 +14,8 @@ for i in range(n):
     offset.append(i*30)
 print(offset)
 
+price_all_pages = []
+
 base_url = "https://realty.domclick.ru/prodazha-kvartir/?addresses=0c5b2444-70a0-4932-980c-b4dc0d3f02b5&offset=%s&region=0c5b2444-70a0-4932-980c-b4dc0d3f02b5&with_photo=1"
 for url in [base_url % i for i in offset]:
     r = requests.get(url)
@@ -38,6 +40,12 @@ for url in [base_url % i for i in offset]:
     avg_price = sum(res_pr)/len(res_pr)
     print(avg_price)
 
+    price_all_pages.append(avg_price)
+
+print(price_all_pages)
+sum(price_all_pages)
+sum_price_all_pages = sum(price_all_pages) / len(price_all_pages)
+print(sum_price_all_pages)
 
 # res = requests.get('https://realty.domclick.ru/prodazha-kvartir/?with_photo=1&addresses=0c5b2444-70a0-4932-980c-b4dc0d3f02b5&region=0c5b2444-70a0-4932-980c-b4dc0d3f02b5')
 # html = res.text
