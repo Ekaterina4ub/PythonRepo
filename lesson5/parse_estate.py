@@ -7,7 +7,7 @@ import requests
 import os
 from bs4 import BeautifulSoup
 
-n = int(input())
+n = input()
 price_all_pages = []
 base_url = "https://realty.domclick.ru/prodazha-kvartir/?addresses=0c5b2444-70a0-4932-980c-b4dc0d3f02b5&offset=%s&region=0c5b2444-70a0-4932-980c-b4dc0d3f02b5&with_photo=1"
 offset = 0

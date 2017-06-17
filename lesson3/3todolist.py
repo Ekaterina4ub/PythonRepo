@@ -7,6 +7,22 @@
 # - просмотреть дело с номером n
 # - поставить дело с номером m на позицию n
 
+class ToDo:
+    def __init__(self, todo):
+        self.todo = todo
+
+
+
+    def add(self):
+        self.todolist.append(self.todo)
+        return self.todolist
+
+r = ToDo('jdhgjd')
+r1 = ToDo('1')
+
+print(r.add())
+print(r1.add())
+
 class Work:
     def __init__(self, name, description):
         self.name = name
