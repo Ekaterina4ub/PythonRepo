@@ -12,5 +12,3 @@ for i in range(0, len, 2):
         break
     items = [(text[i + 1], text[i])]
     print(dict(items))
-
-              
